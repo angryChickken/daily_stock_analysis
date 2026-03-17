@@ -667,8 +667,6 @@ class Config:
         
         # 解析自选股列表（逗号分隔，统一为大写 Issue #355）
         stock_list_str = os.getenv('STOCK_LIST', '')
-        _logger.info("tanz stock list str:")
-        _logger.info(stock_list_str)
         stock_list = [
             (c or "").strip().upper()
             for c in stock_list_str.split(',')
