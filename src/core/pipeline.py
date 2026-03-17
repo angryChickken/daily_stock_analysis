@@ -1069,9 +1069,10 @@ class StockAnalysisPipeline:
         if stock_codes is None:
             self.config.refresh_stock_list()
             stock_codes = self.config.stock_list
-            logger.info("stock_codes:")
+            logger.info("stock_codes is null,after init:")
             logger.info(stock_codes)
-        
+        logger.info("stock_codes not null now,")
+        logger.info(stock_codes)
         if not stock_codes:
             logger.error("未配置自选股列表，请在 .env 文件中设置 STOCK_LIST")
             return []
