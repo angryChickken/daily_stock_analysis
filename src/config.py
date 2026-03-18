@@ -45,6 +45,11 @@ SUPPORTED_LLM_CHANNEL_PROTOCOLS = ("openai", "anthropic", "gemini", "vertex_ai",
 _FALSEY_ENV_VALUES = {"0", "false", "no", "off"}
 
 def read_and_process_stock_line():
+    current_dir = os.getcwd()
+    print(f"当前路径{current_dir}")
+    items = os.listdir('..')
+    for item in items:
+        print(f"上级目录文件：{item}")
     try:
         with open("../defaultStockList.txt", 'r', encoding='utf-8') as file:
             stock_list = []
