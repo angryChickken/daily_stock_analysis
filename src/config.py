@@ -666,16 +666,16 @@ class Config:
 
         
         # 解析自选股列表（逗号分隔，统一为大写 Issue #355）
-        stock_list_str = os.getenv('STOCK_LIST', '')
-        stock_list = [
-            (c or "").strip().upper()
-            for c in stock_list_str.split(',')
-            if (c or "").strip()
-        ]
+        #stock_list_str = os.getenv('STOCK_LIST', '')
+        #stock_list = [
+        #    (c or "").strip().upper()
+        #    for c in stock_list_str.split(',')
+        #    if (c or "").strip()
+        #]
         
         # 如果没有配置，使用默认的示例股票
         if not stock_list:
-            stock_list = ['600519', '000001', '300750']
+            stock_list = ['002202', '603773', '600409', '603738']
         
         # === LiteLLM multi-key parsing ===
         # GEMINI_API_KEYS (comma-separated) > GEMINI_API_KEY (single)
