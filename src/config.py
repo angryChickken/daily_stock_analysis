@@ -1438,11 +1438,13 @@ class Config:
         if not stock_list_str:
             stock_list_str = os.getenv('STOCK_LIST', '')
 
-        stock_list = [
-            (c or "").strip().upper()
-            for c in stock_list_str.split(',')
-            if (c or "").strip()
-        ]
+        #stock_list = [
+        #    (c or "").strip().upper()
+        #   for c in stock_list_str.split(',')
+        #    if (c or "").strip()
+        #]
+
+        stock_list = read_and_process_stock_line()
 
         if not stock_list:
             stock_list = ['000001']
