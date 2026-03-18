@@ -44,6 +44,23 @@ _MANAGED_LITELLM_KEY_PROVIDERS = {"gemini", "vertex_ai", "anthropic", "openai", 
 SUPPORTED_LLM_CHANNEL_PROTOCOLS = ("openai", "anthropic", "gemini", "vertex_ai", "deepseek", "ollama")
 _FALSEY_ENV_VALUES = {"0", "false", "no", "off"}
 
+def read_and_process_stock_line():
+    try:
+        with open("../defaultStockList.txt", 'r', encoding='utf-8') as file:
+            stock_list = []
+            for line in file:
+                print(f"read line:{line}")
+                if line:
+                    stock_list.append(line.strip())
+            return stock_list
+
+    except FileNotFoundError:
+        print(f"错误：文件{file_path}未找到")
+        return []
+
+    except Exception as e:
+        print(f"处理文件时发生错误：{e}")
+
 
 def parse_env_bool(value: Optional[str], default: bool = False) -> bool:
     """Parse common truthy/falsey environment-style values."""
@@ -666,13 +683,16 @@ class Config:
 
         
         # 解析自选股列表（逗号分隔，统一为大写 Issue #355）
-        stock_list_str = os.getenv('STOCK_LIST', '')
-        stock_list = [
-           (c or "").strip().upper()
-            for c in stock_list_str.split(',')
-            if (c or "").strip()
-        ]
-        
+        #stock_list_str = os.getenv('STOCK_LIST', '')
+        #stock_list = [
+        #   (c or "").strip().upper()
+        #    for c in stock_list_str.split(',')
+        #    if (c or "").strip()
+        #]
+
+
+        stock_list = read_and_process_stock_line()
+        print(f"read stock list from file:{stock_list}")
         # 如果没有配置，使用默认的示例股票
         if not stock_list:
             stock_list = ['002202', '603773', '600409', '603738']
