@@ -51,7 +51,7 @@ def read_and_process_stock_line():
     for item in items:
         print(f"当前目录文件：{item}")
     try:
-        with open("../defaultStockList.txt", 'r', encoding='utf-8') as file:
+        with open("defaultStockList.txt", 'r', encoding='utf-8') as file:
             stock_list = []
             for line in file:
                 print(f"read line:{line}")
