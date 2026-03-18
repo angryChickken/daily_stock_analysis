@@ -55,7 +55,7 @@ def read_and_process_stock_line():
             return stock_list
 
     except FileNotFoundError:
-        print(f"错误：文件{file_path}未找到")
+        print(f"错误：文件未找到")
         return []
 
     except Exception as e:
